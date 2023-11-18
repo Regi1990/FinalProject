@@ -11,12 +11,16 @@ public class ValidatePerformanceGlichUserLogin {
         String inventoryUrl = "https://www.saucedemo.com/inventory.html";
         String baseUrl = "https://saucedemo.com/";
         String title = "Products";
+        //get url of website
         driver.get(baseUrl);
 
+
+        //fill user and password information
         driver.findElement(By.cssSelector("[data-test=\"username\"]")).sendKeys("performance_glitch_user");
         driver.findElement(By.cssSelector("[data-test=\"password\"]")).sendKeys("secret_sauce");
         driver.findElement(By.cssSelector("[data-test=\"login-button\"]")).click();
 
+        //validate login input -> positive test
         String currentUrl = driver.getCurrentUrl();
         if(inventoryUrl.equals(currentUrl)){
             System.out.println("Inventory URL Correct");
@@ -32,6 +36,7 @@ public class ValidatePerformanceGlichUserLogin {
             System.out.println("Products Title is Wrong");
         }
 
+        //close connection and end tester
         driver.close();
         driver.quit();
     }
